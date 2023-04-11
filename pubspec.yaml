@@ -49,11 +49,8 @@ dev_dependencies:
   animations: ^2.0.3
   alan_voice: ^3.11.0
   quickalert: ^1.0.0
-  firebase_core: ^1.24.0
-  firebase_auth: ^3.11.0
-  cloud_firestore: ^3.5.0
-  google_sign_in: ^5.4.2
-  url_launcher: ^6.1.6
+  http: ^0.13.5
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

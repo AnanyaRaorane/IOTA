@@ -3,6 +3,7 @@ import 'package:alan_voice/alan_voice.dart';
 import 'package:iota/model/device_model.dart';
 import 'package:iota/pages/home/widgets/devices.dart';
 import 'package:iota/utils/string_to_color.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +13,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // bool isSwitched = false;
+  // var textValue = 'Switch is OFF';
+  //
+  // void toggleSwitch(bool value) {
+  //
+  //   if(isSwitched == false)
+  //   {
+  //     setState(() {
+  //       isSwitched = true;
+  //       updatevalue();
+  //       textValue = 'Switch Button is ON';
+  //     });
+  //     print('Switch Button is ON');
+  //   }
+  //   else
+  //   {
+  //     setState(() {
+  //       isSwitched = false;
+  //       reupdatevalue();
+  //       textValue = 'Switch Button is OFF';
+  //     });
+  //     print('Switch Button is OFF');
+  //   }
+  // }
   _HomePageState(){
     AlanVoice.addButton(
         "12dfa922dbb73367c7df51e057309bbb2e956eca572e1d8b807a3e2338fdd0dc/stage",
@@ -44,9 +69,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {  },
-
-      ),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -149,6 +171,7 @@ class _HomePageState extends State<HomePage> {
                                     svg: devices[index].icon,
                                     color: devices[index].color.toColor(),
                                     isActive: devices[index].isActive,
+                                    //onChanged: toggleSwitch,
                                     onChanged: (val) {
                                       setState(() {
                                         devices[index].isActive =

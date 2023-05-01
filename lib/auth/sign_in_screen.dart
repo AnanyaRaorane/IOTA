@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   children: [
                     SizedBox(height: 20),
                     Text(
-                      'LoanKr',
+                      'IOTA',
                       style: TextStyle(
                         fontSize: 40,
                       ),

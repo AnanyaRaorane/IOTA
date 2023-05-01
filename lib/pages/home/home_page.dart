@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:alan_voice/alan_voice.dart';
 import 'package:iota/model/device_model.dart';
 import 'package:iota/pages/home/widgets/devices.dart';
 import 'package:iota/utils/string_to_color.dart';
-import 'package:http/http.dart' as http;
+
+const String blynkApiKey = 'your_api_key_here';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,58 +15,54 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // bool isSwitched = false;
-  // var textValue = 'Switch is OFF';
-  //
-  // void toggleSwitch(bool value) {
-  //
-  //   if(isSwitched == false)
-  //   {
-  //     setState(() {
-  //       isSwitched = true;
-  //       updatevalue();
-  //       textValue = 'Switch Button is ON';
-  //     });
-  //     print('Switch Button is ON');
-  //   }
-  //   else
-  //   {
-  //     setState(() {
-  //       isSwitched = false;
-  //       reupdatevalue();
-  //       textValue = 'Switch Button is OFF';
-  //     });
-  //     print('Switch Button is OFF');
-  //   }
-  // }
   _HomePageState(){
     AlanVoice.addButton(
         "12dfa922dbb73367c7df51e057309bbb2e956eca572e1d8b807a3e2338fdd0dc/stage",
         buttonAlign: AlanVoice.BUTTON_ALIGN_LEFT);
-    //AlanVoice.playText("Hi" );
+    AlanVoice.playText("Hi" );
   }
   List<DeviceModel> devices = [
     DeviceModel(
       name: 'A',
-      isActive: true,
+      isActive: false,
       color: "#ff5f5f",
+      virtualPin: 'v1',
     ),
     DeviceModel(
       name: 'B',
-      isActive: true,
+      isActive: false,
       color: "#7739ff",
+      virtualPin: 'v2',
     ),
     DeviceModel(
       name: 'C',
       isActive: false,
       color: "#c9c306",
+      virtualPin: 'v3',
     ),
     DeviceModel(
       name: 'D',
       isActive: false,
       color: "#c207db",
+      virtualPin: 'v4',
     ),
   ];
+  Future<void> toggleDevice(DeviceModel device) async {
+    final url = Uri.parse('https://lon1.blynk.cloud/external/api/update');
+    final value = device.isActive ? '0' : '1';
+    final response = await http.get(url.replace(queryParameters: {
+      'token': 'y6NHcNnRfk8WX8VL5LFmnsY3rC122zLs',
+      device.virtualPin: value,
+    }));
+    if (response.statusCode == 200) {
+      setState(() {
+        device.isActive = !device.isActive;
+      });
+      print("value updated");
+    } else {
+      throw "Unable to retrieve posts.";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,10 +171,7 @@ class _HomePageState extends State<HomePage> {
                                     isActive: devices[index].isActive,
                                     //onChanged: toggleSwitch,
                                     onChanged: (val) {
-                                      setState(() {
-                                        devices[index].isActive =
-                                            !devices[index].isActive;
-                                      });
+                                      toggleDevice(devices[index]);
                                     },
                                   );
                                 }),
@@ -194,3 +189,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+

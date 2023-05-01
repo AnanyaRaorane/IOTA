@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1059655586133",
+    "project_id": "iota-cdc18",
+    "storage_bucket": "iota-cdc18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059655586133:android:4c0d309c3a327ae9269fdc",
+        "android_client_info": {
+          "package_name": "com.example.iota"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059655586133-nhn52sqm651aaeneh2tpiik2858so90d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLpbQuJiWr_I7QUS2S_XHNGY0Gyh5zqgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059655586133-esvoh90j8athaup7jaclp35g54uqrrpp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

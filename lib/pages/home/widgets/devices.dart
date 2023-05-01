@@ -41,14 +41,13 @@ class Devices extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(
-                const Radius.circular(20.0),
+                Radius.circular(20.0),
               ),
               border: Border.all(
                 color: Colors.black!,
                 width: 0.6,
               ),
-              boxShadow: 
-              isActive
+              boxShadow: isActive
                   ? [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.3),
